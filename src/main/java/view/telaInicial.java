@@ -26,7 +26,7 @@ public class telaInicial extends javax.swing.JFrame {
             jTextField4.setText((String) lista.get(1));
             jTextField1.setText((String) lista.get(2));
             jTextField2.setText((String) lista.get(3));
-            jPasswordField1.setText(CriptografaSenha.descriptografar((String) lista.get(4), "1234567890123456"));
+            jPasswordField1.setText(CriptografaSenha.descriptografar((String) lista.get(4)));
         }
     }
 
@@ -191,7 +191,7 @@ public class telaInicial extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Não foi possível conectar ao banco! Vertifique se as informações estão corretas.");
             }
-        } catch (Exception ex) {
+        } catch (HeadlessException ex) {
             Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnConnActionPerformed
@@ -214,7 +214,7 @@ public class telaInicial extends javax.swing.JFrame {
         char[] password = jPasswordField1.getPassword();
         String senha = new String(password);
         try {
-            senha = CriptografaSenha.criptografar(senha, "1234567890123456");
+            senha = CriptografaSenha.criptografar(senha);
         } catch (Exception ex) {
             Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -261,15 +261,13 @@ public class telaInicial extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new telaInicial().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (Exception ex) {
-                    Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new telaInicial().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

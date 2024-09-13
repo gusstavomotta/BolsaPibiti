@@ -17,20 +17,21 @@ public class CriptografaSenha {
 
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
+    private static final String CHAVE = "1234567890123456";
 
-    public static String criptografar(String senha, String chave) throws Exception {
+    public static String criptografar(String senha) throws Exception {
 
         Cipher cipher = Cipher.getInstance(TRANSFORMATION);
-        SecretKeySpec secretKey = new SecretKeySpec(chave.getBytes(), ALGORITHM);
+        SecretKeySpec secretKey = new SecretKeySpec(CHAVE.getBytes(), ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 
         byte[] senhaCriptografada = cipher.doFinal(senha.getBytes());
         return Base64.getEncoder().encodeToString(senhaCriptografada);
     }
 
-    public static String descriptografar(String senhaCriptografada, String chave) throws Exception {
+    public static String descriptografar(String senhaCriptografada) throws Exception {
         Cipher cipher = Cipher.getInstance(TRANSFORMATION);
-        SecretKeySpec secretKey = new SecretKeySpec(chave.getBytes(), ALGORITHM);
+        SecretKeySpec secretKey = new SecretKeySpec(CHAVE.getBytes(), ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
 
         byte[] senhaDecodificada = Base64.getDecoder().decode(senhaCriptografada);

@@ -1,5 +1,0 @@
-localhost
-3307
-lic_bd
-root
-3jgmUpRuHqoLmF418AV7Sw==
