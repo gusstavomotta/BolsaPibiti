@@ -1,5 +1,5 @@
 localhost
-3306
-bancodados
+3307
+lic_bd
 root
-root
+3jgmUpRuHqoLmF418AV7Sw==
