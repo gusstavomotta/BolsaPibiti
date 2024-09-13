@@ -10,9 +10,6 @@ package model;
  */
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import java.util.Base64;
 
@@ -41,10 +38,5 @@ public class CriptografaSenha {
         return new String(senhaDescriptografada);
     }
 
-    public static void salvarEmArquivo(String senhaCriptografada, String caminhoArquivo) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(caminhoArquivo))) {
-            writer.write(senhaCriptografada);
-        }
-    }
 
 }
