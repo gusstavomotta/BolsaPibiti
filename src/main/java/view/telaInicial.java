@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Conexao;
-import model.CriptografaSenha;
+import model.CriptografaDados;
 
 public class telaInicial extends javax.swing.JFrame {
 
@@ -22,11 +22,11 @@ public class telaInicial extends javax.swing.JFrame {
 
             ArrayList lista = escritor.lerTxt();
 
-            jTextField5.setText((String) lista.get(0));
-            jTextField4.setText((String) lista.get(1));
-            jTextField1.setText((String) lista.get(2));
-            jTextField2.setText((String) lista.get(3));
-            jPasswordField1.setText(CriptografaSenha.descriptografar((String) lista.get(4)));
+            jTextField5.setText(CriptografaDados.descriptografar((String) lista.get(0)));
+            jTextField4.setText(CriptografaDados.descriptografar((String) lista.get(1)));
+            jTextField1.setText(CriptografaDados.descriptografar((String) lista.get(2)));
+            jTextField2.setText(CriptografaDados.descriptografar((String) lista.get(3)));
+            jPasswordField1.setText(CriptografaDados.descriptografar((String) lista.get(4)));
         }
     }
 
@@ -213,8 +213,14 @@ public class telaInicial extends javax.swing.JFrame {
 
         char[] password = jPasswordField1.getPassword();
         String senha = new String(password);
+
         try {
-            senha = CriptografaSenha.criptografar(senha);
+            serverhost = CriptografaDados.criptografar(serverhost);
+            database = CriptografaDados.criptografar(database);
+            porta = CriptografaDados.criptografar(porta);
+            usuario = CriptografaDados.criptografar(usuario);
+            senha = CriptografaDados.criptografar(senha);
+
         } catch (Exception ex) {
             Logger.getLogger(telaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -13,7 +13,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import java.util.Base64;
 
-public class CriptografaSenha {
+public class CriptografaDados {
 
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
